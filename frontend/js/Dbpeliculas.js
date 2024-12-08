@@ -1,5 +1,5 @@
 export const obtenerPeliculas = () => {
-    const peliculas = localStorage.getItem("peliculas") || []
+    const peliculas = localStorage.getItem("peliculas")
     return peliculas ? JSON.parse(peliculas) : []
 }
 
