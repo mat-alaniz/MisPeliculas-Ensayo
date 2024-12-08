@@ -1,3 +1,7 @@
+import {obtenerPeliculas, guardarPeliculas} from "./Dbpeliculas.js"
+const verPeliculas = obtenerPeliculas();
+
+
 const peliculas = []
 
 const inputNombrePelicula = document.getElementById("inputNombrePelicula")
@@ -6,13 +10,14 @@ const inputFechaEstreno = document.getElementById("inputFechaEstreno")
 const inputGenero = document.getElementById("inputGenero")
 const mostrarListaPeliculas = document.getElementById("mostrarPeliculas")
 const btnEditar = document.getElementById("btnEditar")
+const inputImagen = document.getElementById("inputImagen")
 btnEditar.classList.add("d-none")
 
 // Agregar variable para mantener el índice de edición
 let indiceEdicion = -1;
 
 btn.addEventListener("click", () => {
-if(inputNombrePelicula.value === "" || inputFechaEstreno.value === "" || inputGenero.value === ""){
+if(inputNombrePelicula.value === "" || inputFechaEstreno.value === "" || inputGenero.value === "" || inputImagen.value === ""){
         alert("Todos los campos son obligatorios")
         return          
     }
@@ -20,8 +25,11 @@ if(inputNombrePelicula.value === "" || inputFechaEstreno.value === "" || inputGe
         nombre: inputNombrePelicula.value,
         fechaEstreno: inputFechaEstreno.value,
         genero: inputGenero.value,
+        imagen: inputImagen.value
     }
-    peliculas.push(nuevaPelicula)
+
+    verPeliculas.push(nuevaPelicula)
+    guardarPeliculas(verPeliculas)
     mostrarPeliculas()
     Swal.fire({
         title: "Éxito!",
@@ -31,15 +39,20 @@ if(inputNombrePelicula.value === "" || inputFechaEstreno.value === "" || inputGe
     inputNombrePelicula.value = ""
     inputFechaEstreno.value = ""
     inputGenero.value = ""
+    inputImagen.value = ""
 })
+mostrarPeliculas()
+
+
 function mostrarPeliculas(){
     mostrarListaPeliculas.innerHTML = ""
-    peliculas.forEach((films, index) => {
+    verPeliculas.forEach((films, index) => {
         mostrarListaPeliculas.innerHTML += `<tr>
         <th scope="row">${index + 1}</th>
         <td>${films.nombre}</td>
         <td>${films.fechaEstreno}</td>
         <td>${films.genero}</td>
+        <td><img src="${films.imagen}" alt="Imagen de la pelicula" class="img-thumbnail w-25"></td>
         <td>                    
             <button onclick="eliminarPeliculas(${index})" class="btn btn-danger">Eliminar</button>
             <button onclick="editarPeliculas(${index})" class="btn btn-warning">Editar</button>
@@ -47,7 +60,7 @@ function mostrarPeliculas(){
         </tr>`
     })
 }
-mostrarPeliculas()
+
 
 function eliminarPeliculas(index){
     Swal.fire({

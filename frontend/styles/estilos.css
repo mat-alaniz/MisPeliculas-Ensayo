@@ -27,3 +27,12 @@ body{
     border-radius: 5px;
     z-index: 1;  /* Asegura que el formulario esté por encima de la imagen */
 }
+
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(10px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+}

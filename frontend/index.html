@@ -10,12 +10,12 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <title>Mis peliculas</title>
+    <title>SodaRey-Peliculas-admin</title>
   </head>
   <body>
     <main>
       <div class="titulo">
-        <h1>Mis peliculas</h1>
+        <h1>SodaRey-Peliculas-admin</h1>
       </div>
 
       <div class="formulario">
@@ -23,7 +23,7 @@
           class="form-control"
           type="text"
           id="inputNombrePelicula"
-          placeholder="Ingrese el nombre de la pelicula favorita"
+          placeholder="Ingrese el nombre de la pelicula"
         />
         <input
           class="form-control"
@@ -37,6 +37,7 @@
           id="inputGenero"
           placeholder="Genero"
         />
+        <input type="text" id="inputImagen" placeholder="Imagen">
         <button id="btn" class="btn btn-primary mt-2">Guardar pelicula</button>
         <button id="btnEditar" class="btn btn-warning mt-2">editar</button>
         <table class="table">
@@ -46,13 +47,15 @@
               <th scope="col">Ingrese el nombre de la pelicula favorita</th>
               <th scope="col">Fecha de estreno</th>
               <th scope="col">Genero</th>
+              <th scope="col">Imagen</th>
+              <th scope="col">Acciones</th>
             </tr>
           </thead>
           <tbody id="mostrarPeliculas"></tbody>
         </table>
       </div>
     </main>
-    <script src="../frontend/js/app.js"></script>
+    <script type="module" src="./js/app.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
